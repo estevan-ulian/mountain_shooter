@@ -39,12 +39,22 @@ ENTITY_SPEED = {
     'Level1Bg5': 5,
     'Level1Bg6': 6,
     'Player1': 3,
+    'Player1Shot': 3,
     'Player2': 3,
-    'Enemy1': 2,
-    'Enemy2': 1
+    'Player2Shot': 3,
+    'Enemy1': 1,
+    'Enemy1Shot': 5,
+    'Enemy2': 1,
+    'Enemy2Shot': 2,
 }
 
 EVENT_ENEMY = pygame.USEREVENT + 1
+ENTITY_SHOT_DELAY = {
+    'Player1': 20,
+    'Player2': 15,
+    'Enemy1': 100,
+    'Enemy2': 200,
+}
 ENEMY_SPAWN_TIME = 4000
 # M
 MENU_OPTION = ('NEW GAME 1P', 'NEW GAME 2P - COOPERATIVE',
