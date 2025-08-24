@@ -132,3 +132,20 @@ TIMEOUT_STEP = 100
 # W
 WINDOW_WIDTH = 576
 WINDOW_HEIGHT = 324
+
+# S
+SCORE_POS = {'Title': (WINDOW_WIDTH / 2, 50),
+             'EnterName': (WINDOW_WIDTH / 2, 80),
+             'Label': (WINDOW_WIDTH / 2, 90),
+             'Name': (WINDOW_WIDTH / 2, 110),
+             0: (WINDOW_WIDTH / 2, 110),
+             1: (WINDOW_WIDTH / 2, 130),
+             2: (WINDOW_WIDTH / 2, 150),
+             3: (WINDOW_WIDTH / 2, 170),
+             4: (WINDOW_WIDTH / 2, 190),
+             5: (WINDOW_WIDTH / 2, 210),
+             6: (WINDOW_WIDTH / 2, 230),
+             7: (WINDOW_WIDTH / 2, 250),
+             8: (WINDOW_WIDTH / 2, 270),
+             9: (WINDOW_WIDTH / 2, 290),
+             }

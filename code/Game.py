@@ -4,6 +4,7 @@ import pygame
 from code.Const import MENU_OPTION, WINDOW_WIDTH, WINDOW_HEIGHT
 from code.Level import Level
 from code.Menu import Menu
+from code.Score import Score
 
 
 class Game:
@@ -16,15 +17,21 @@ class Game:
         while True:
             pygame.display.set_caption("Mountain Shooter")
             menu = Menu(self.window)
+            score = Score(self.window)
             selected_menu = menu.run()
 
             if selected_menu in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
                 player_score = [0, 0]
-                level = Level(self.window, 'Level1', selected_menu, player_score)
+                level = Level(self.window, 'Level1',
+                              selected_menu, player_score)
                 player_level = level.run(player_score)
                 if player_level:
-                    level = Level(self.window, 'Level2', selected_menu, player_score)
+                    level = Level(self.window, 'Level2',
+                                  selected_menu, player_score)
                     player_level = level.run(player_score)
+                    score.save(selected_menu, player_score)
+            elif selected_menu == MENU_OPTION[3]:
+                score.show()
             elif selected_menu == MENU_OPTION[4]:
                 pygame.quit()
                 quit()
