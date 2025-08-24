@@ -33,7 +33,7 @@ class Menu:
                 else:
                     self.menu_text(text_size=20, text=MENU_OPTION[i], text_color=COLOR_WHITE, text_center_pos=(
                         (WINDOW_WIDTH / 2), 180 + (i * 30)))
-            
+
             # CHECK ALL EVENTS
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

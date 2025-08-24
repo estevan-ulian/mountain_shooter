@@ -10,7 +10,7 @@ from code.Const import WINDOW_WIDTH, WINDOW_HEIGHT
 
 class EntityFactory:
     @staticmethod
-    def get_entity(entity_name: str, position=(0, 0)):
+    def get_entity(entity_name: str):
         match entity_name:
             case 'Level1Bg':
                 bg_list = []

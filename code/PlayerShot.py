@@ -3,8 +3,8 @@ from code.Entity import Entity
 
 
 class PlayerShot(Entity):
-  def __init__(self, name: str, position: tuple[int, int]):
-    super().__init__(name, position)
-    
-  def move(self):
-    self.rect.centerx += ENTITY_SPEED[self.name]
+    def __init__(self, name: str, position: tuple[int, int]):
+        super().__init__(name, position)
+
+    def move(self):
+        self.rect.centerx += ENTITY_SPEED[self.name]
