@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from tkinter.font import Font
+from random import choice
 from pygame import Rect, Surface
 import pygame
-from code.Const import WINDOW_HEIGHT, COLOR_WHITE
+from code.Const import ENEMY_SPAWN_TIME, EVENT_ENEMY, MENU_OPTION, WINDOW_HEIGHT, COLOR_WHITE
 from code.EntityFactory import EntityFactory
 from code.Entity import Entity
 
@@ -14,9 +15,13 @@ class Level:
         self.window = window
         self.name = name
         self.game_mode = game_mode
+        self.timeout = 20000  # 20 seconds
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
-        self.timeout = 20000  # 20 seconds
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
+        if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
+            self.entity_list.append(EntityFactory.get_entity('Player2'))
+        pygame.time.set_timer(EVENT_ENEMY, ENEMY_SPAWN_TIME)
 
     def run(self):
         pygame.mixer.music.load(f'./asset/{self.name}.mp3')
@@ -31,6 +36,9 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
+                if event.type == EVENT_ENEMY:
+                    rand_enemy = choice(['Enemy1', 'Enemy2'])
+                    self.entity_list.append(EntityFactory.get_entity(rand_enemy))
 
             # printed text
             self.level_text(
