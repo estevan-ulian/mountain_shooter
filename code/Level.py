@@ -7,7 +7,7 @@ from pygame import Rect, Surface
 import pygame
 from code.Enemy import Enemy
 from code.EntityMediator import EntityMediator
-from code.Const import ENEMY_SPAWN_TIME, EVENT_ENEMY, MENU_OPTION, WINDOW_HEIGHT, COLOR_WHITE
+from code.Const import COLOR_CYAN, COLOR_GREEN, ENEMY_SPAWN_TIME, EVENT_ENEMY, MENU_OPTION, WINDOW_HEIGHT, COLOR_WHITE
 from code.EntityFactory import EntityFactory
 from code.Entity import Entity
 from code.Player import Player
@@ -32,13 +32,20 @@ class Level:
         clock = pygame.time.Clock()
         while True:
             clock.tick(60)
-            for ent in self.entity_list:
-                self.window.blit(source=ent.surf, dest=ent.rect)
-                ent.move()
-                if isinstance(ent, (Player, Enemy)):
-                    shoot = ent.shoot()
+            for entity in self.entity_list:
+                self.window.blit(source=entity.surf, dest=entity.rect)
+                entity.move()
+                if isinstance(entity, (Player, Enemy)):
+                    shoot = entity.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
+                if entity.name == 'Player1':
+                    self.level_text(
+                        text_size=14, text=f'Player1 - Health: {entity.health} | Score: {entity.score}', text_color=COLOR_GREEN, text_pos=(10, 25))
+                if entity.name == 'Player2':
+                    self.level_text(
+                        text_size=14, text=f'Player2 - Health: {entity.health} | Score: {entity.score}', text_color=COLOR_CYAN, text_pos=(10, 45))
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
