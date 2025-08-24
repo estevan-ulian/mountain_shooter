@@ -5,6 +5,7 @@ from tkinter.font import Font
 from random import choice
 from pygame import Rect, Surface
 import pygame
+from code.EntityMediator import EntityMediator
 from code.Const import ENEMY_SPAWN_TIME, EVENT_ENEMY, MENU_OPTION, WINDOW_HEIGHT, COLOR_WHITE
 from code.EntityFactory import EntityFactory
 from code.Entity import Entity
@@ -49,6 +50,10 @@ class Level:
                 text_size=14, text=f'entidades: {len(self.entity_list)}', text_color=COLOR_WHITE, text_pos=(10, WINDOW_HEIGHT - 20))
 
             pygame.display.flip()
+            
+            # Collisions
+            EntityMediator.verify_collision(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(
