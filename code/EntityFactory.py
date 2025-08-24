@@ -20,6 +20,14 @@ class EntityFactory:
                     bg_list.append(Background(
                         name=f'Level1Bg{i}', position=(WINDOW_WIDTH, 0)))
                 return bg_list
+            case 'Level2Bg':
+                bg_list = []
+                for i in range(5):
+                    bg_list.append(Background(
+                        name=f'Level2Bg{i}', position=(0, 0)))
+                    bg_list.append(Background(
+                        name=f'Level2Bg{i}', position=(WINDOW_WIDTH, 0)))
+                return bg_list
             case 'Player1':
                 return Player(name='Player1', position=(10, WINDOW_HEIGHT / 2 - 30))
             case 'Player2':
